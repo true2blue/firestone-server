@@ -13,6 +13,7 @@ import swaggerify from './swagger';
 
 import l from './logger';
 import { connectDB } from '../api/models';
+import configMockService from '../api/services/configmock.service'
 
 const app = new Express();
 
@@ -34,22 +35,32 @@ export default class ExpressServer {
   }
 
 
-  startFirestone(){
-    let exec = util.promisify(child_process.exec)
-    exec('shell\\runfirestone');
-    l.info('start the firestone service');
+  init() {
+    configMockService.clear().then(r => {
+      l.info('reset all mock config curBuyNum = 0, monitor_concept = [] done');
+    }, (err) => {
+      l.error(`reset all mock config curBuyNum = 0, monitor_concept = [] failed = ${err}`);
+    });
+    if (process.env.ENABLE_FIRESTONE === 'true') {
+      let exec = util.promisify(child_process.exec)
+      exec('shell\\runfirestone');
+      l.info('start the firestone service');
+    }
+    else {
+      l.warn('firestone is disable, ignore the firestone service');
+    }
   }
 
 
   listen(port = process.env.PORT) {
-    connectDB().then(async ()=> {
-      const welcome = p => () => l.info(`up and running in ${process.env.NODE_ENV || 'development'} @: ${os.hostname()} on port: ${p}}`);
+    connectDB().then(async () => {
+      const welcome = p => () => l.info(`up and running in ${process.env.APP_ENV || 'development'} @: ${os.hostname()} on port: ${p}}`);
       http.createServer(app).listen(port, welcome(port));
       schedule.scheduleJob('0 0 9 ? * 1-5', () => {
-        this.startFirestone();
+        this.init();
       });
-      if(new Date().getHours() >= 9){
-        this.startFirestone();
+      if (new Date().getHours() >= 9) {
+        this.init();
       }
     });
     return app;

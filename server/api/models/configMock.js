@@ -5,10 +5,17 @@ const configMockSchema = new mongoose.Schema({
     maxBuyNum: {
         type: Number
     },
+    curBuyNum: {
+        type: Number,
+        default: 0
+    },
     ths_url: {
         type: String
     },
     cookie: {
+        type: String
+    },
+    username: {
         type: String
     },
     gdzh: {
@@ -16,6 +23,9 @@ const configMockSchema = new mongoose.Schema({
     },
     sh_gdzh: {
         type: String
+    },
+    monitor_concept: {
+        type: Array
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId

@@ -25,8 +25,7 @@ const mockTradeSchema = new mongoose.Schema({
         default: false
     },
     createDate: {
-        type: Date,
-        default: Date.now()
+        type: Date
     },
     params : {
         type: Object
@@ -37,11 +36,12 @@ mockTradeSchema.statics.findByUserId = async function (userId) {
     l.info(`find the mockTrade of user ${userId}`);
     let now = new Date();
     let startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    let startOfTodayStr = `${now.getFullYear()}-${('0' + (now.getMonth() + 1)).slice(-2)}-${('0' + now.getDate()).slice(-2)}`;
     return this.find({
         userId: mongoose.Types.ObjectId(userId),
-        createDate: {$gte: startOfToday},
+        $or: [{createDate: {$gte: startOfToday}}, {'params.executeDate': {$gte: startOfTodayStr}}],
         deleted: false
-    }).populate('strategyId');
+    }).sort({createDate : -1}).populate('strategyId');
 }
 
 mockTradeSchema.statics.findByUserIdAndDateAndCode = async function(userId, createdDate, code){
