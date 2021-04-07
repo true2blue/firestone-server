@@ -45,6 +45,8 @@ Compiles the application and starts it in production production mode.
 
 ```shell
 npm run compile
+xcopy node_modules dist\node_modules
+xcopy .env dist\.env
 npm start
 ```
 
