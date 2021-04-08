@@ -9,9 +9,9 @@ db.configmocks.insert({
     "curBuyNum" : 0,
     "ths_url" : "http://mncg.10jqka.com.cn/cgiwt/index/index",
     "cookie" : "__utma=156575163.1101180334.1557107567.1557375466.1557738304.3; __utmz=156575163.1557738304.3.3.utmcsr=yamixed.com|utmccn=(referral)|utmcmd=referral|utmcct=/fav/article/2/157; isSaveAccount=0; PHPSESSID=0ee41a659eca05d9c02da980b42b337b; Hm_lvt_78c58f01938e4d85eaf619eae71b4ed1=1570773015,1570773052,1572246079; user=MDphcXVhSVFjOjpOb25lOjUwMDo0MjUzOTk0Njc6NywxMTExMTExMTExMSw0MDs0NCwxMSw0MDs2LDEsNDA7NSwxLDQwOzEsMSw0MDsyLDEsNDA7MywxLDQwOzUsMSw0MDs4LDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxLDQwOjI0Ojo6NDE1Mzk5NDY3OjE1NzIyNDYwOTc6OjoxNTA2MDQ4OTYwOjg2NDAwOjA6MThkZjg4MDU4NWQ1MjAxNWI4YjczMmQ1YjVjY2Q4MjdiOmRlZmF1bHRfMjox; userid=415399467; u_name=aquaIQc; escapename=aquaIQc; ticket=4946f5e543fb81ad0500537a32fbb290; log=; v=ApOFSy-Cygxe94ZYp7X7ueKFIhy-SCcK4dxrPkWw77LpxL1KzRi3WvGs-4FW; Hm_lpvt_78c58f01938e4d85eaf619eae71b4ed1=1572246108",
-    "username" : "48039195",
-    "gdzh" : "0098894246",
-    "sh_gdzh" : "A474614369",
+    "username" : "58382679",
+    "gdzh" : "00109207787",
+    "sh_gdzh" : "A484928121",
     "monitor_concept" : [],
     "userId" : ObjectId("5d905db9fc84d3224b0eb59c")
 });
@@ -48,16 +48,20 @@ db.strategies.insertMany([{
         "code" : "",
         "executeDate" : "",
         "monitorTime" : {
-            "start" : "09:35",
-            "end" : "14:30"
+            "start" : "09:30",
+            "end" : "14:50"
         },
         "index_percent" : {
-            "low" : "-0.3",
-            "high" : "3.0"
+            "low" : "-0.2",
+            "high" : "3.5"
         },
         "percent" : {
-            "low" : "0.8",
-            "high" : "2.5"
+            "low" : "2.5",
+            "high" : "5.0"
+        },
+        "open_percent" : {
+            "low" : "-2.0",
+            "high" : "3.0"
         },
         "speed" : {
             "upper_shadow" : "0.2",
@@ -66,8 +70,8 @@ db.strategies.insertMany([{
             "time" : "2",
             "break_top" : "1.5",
             "time_2" : "2",
-            "percent" : "0.5",
-            "amount" : "600"
+            "percent" : "2",
+            "amount" : "800"
         },
         "volume" : 20000
     }
@@ -107,19 +111,43 @@ db.strategies.insertMany([{
         "code" : "N/A",
         "executeDate" : "",
         "monitorTime" : {
-            "start" : "09:35",
-            "end" : "14:50"
+            "start" : "09:30",
+            "end" : "14:45"
         },
         "index_percent" : "0.80",
-        "concepts" : "华为概念,新能源汽车,区块链,5G,锂电池,文化传媒,雄安新区,大数据,芯片概念,工业4.0,光伏概念,长三角一体化,ST板块,云计算,生物医药,小金属概念,人工智能,智慧城市,特斯拉,国产软件,虚拟现实,智能电网,人民币贬值受益,燃料电池,天然气,国产操作系统,新零售,集成电路概念,边缘计算,充电桩,苹果概念,工业互联网,网络安全,智能穿戴,柔性屏,汽车电子,互联网医疗,粤港澳大湾区,无人驾驶,安防,网络游戏,稀土永磁,手机游戏,工业大麻,无线耳机,石墨烯,上海自贸区,跨境电商,智能交通,横琴新区,卫星导航,智能医疗,黄金概念,供应链金融,智能物流,稀缺资源,网红经济,数字中国,知识产权保护,ETC,人造肉,数字货币,人脸识别,蓝宝石,禽流感,钴,猪肉,无线充电,电子竞技,量子通信,华为海思概念股,水泥,自由贸易港,超级品牌,胎压监测,光刻胶,北汽新能源,智能音箱,云游戏,福建自贸区,网络切片,超导,石墨电极,澳交所概念,语音技术",
+        "index_max_percent" : "5.0",
+        "concepts" : "医疗废物处理,云计算,云办公,云游戏,消毒剂,数字中国,边缘计算,国产软件,集成电路概念,网络安全,污水处理,无人零售,芯片概念,固废处理,光刻胶,大数据,华为海思概念股,国产操作系统,在线教育,手机游戏,垃圾分类,知识产权保护,网络游戏,数字货币,人工智能,区块链,华为概念,电子竞技,5G,口罩,卫星导航,澳交所概念,非科创次新股,车联网,柔性屏,文化传媒,互联网保险,汽车电子,虚拟现实,人民币贬值受益,独角兽概念,智能物流,无人驾驶,氢能源,横琴新区,富士康概念,创投,供应链金融,跨境电商,电子商务,智能音箱,智能穿戴,智能医疗,光伏概念,长三角一体化,北汽新能源,燃料电池,无线耳机,年报预增,充电桩,苹果概念,物流电商平台,新零售,网红经济,农村电商,胎压监测,无线充电,乡村振兴,稀土永磁,锂电池,特斯拉,新能源汽车,冷链物流,小金属概念,石墨烯,黄金概念,粤港澳大湾区,稀缺资源,超级品牌,互联网医疗,宁德时代概念,ST板块,钴,燃料乙醇,石墨电极,高校,人造肉,水泥,工业大麻,语音技术,健康中国,基因测序,医疗器械概念,细胞免疫治疗,医药电商,民营医院,生物医药,青蒿素,眼科医疗,仿制药一致性评价,芬太尼,动物疫苗,禽流感,流感,生物疫苗,超级真菌",
         "company_count" : "250",
-        "net_buy" : "0",
+        "net_buy" : "-20",
         "stock_percent" : "9.90",
-        "top_concept" : "3",
-        "max_concept" : "8",
-        "monitor_count" : "5",
-        "max_percent" : "2.5",
+        "top_concept" : "5",
+        "max_concept" : "6",
+        "monitor_count" : "6",
+        "min_open_percent" : "-2.0",
+        "max_open_percent" : "3.0",
+        "min_percent" : "2.5",
+        "max_percent" : "5.0",
         "volume" : "20000",
         "strategyId" : "5da19b7d181fc3600c5544c3"
+    }
+},{
+    "_id" : ObjectId("5da19b7d181fc3600c5544c6"),
+    "name" : "批量异动拉升",
+    "description" : "同时对一组股票进行异动拉升监控",
+    "op" : "buy",
+    "url" : "BatchYdls",
+    "parameters" : {
+        "code" : "",
+        "executeDate" : "",
+        "monitorTime" : {
+            "start" : "00:00",
+            "end" : "23:59"
+        },
+        "desc" : "其它",
+        "strategyId" : "5da19b7d181fc3600c5544c3",
+        "open_percent_low" : "-2.0",
+        "open_percent_high" : "3.5",
+        "max_stock_percent" : "7.0",
+        "volume" : "10000"
     }
 }]);
