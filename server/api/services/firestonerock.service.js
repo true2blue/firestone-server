@@ -31,7 +31,7 @@ class FireStoneRockService {
         let msg = `start the firestonerock service code=${codes}, tradeId=${tradeId}`;
         l.info(msg);
         if(process.env.ENABLE_FIREROCK === 'true'){
-            let seconds = '2,5,8,11,14,17,20,23,26,29,32,35,38,41,44,47,50,53,56,59';
+            let seconds = '"2,5,8,11,14,17,20,23,26,29,32,35,38,41,44,47,50,53,56,59"';
             if(codes[0] == 'N/A'){
                 seconds = '3';
             }
