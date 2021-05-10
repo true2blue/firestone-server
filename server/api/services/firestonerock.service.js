@@ -27,15 +27,15 @@ class FireStoneRockService {
         };
     }
 
-    async createNewFirerock(codes, tradeId) {
-        let msg = `start the firestonerock service code=${codes}, tradeId=${tradeId}`;
+    async createNewFirerock(codes, tradeId, isMock) {
+        let msg = `start the firestonerock service code=${codes}, tradeId=${tradeId}, isMock=${isMock}`;
         l.info(msg);
         if(process.env.ENABLE_FIREROCK === 'true'){
             let seconds = '"2,5,8,11,14,17,20,23,26,29,32,35,38,41,44,47,50,53,56,59"';
             if(codes[0] == 'N/A'){
                 seconds = '3';
             }
-            this.exec(`shell\\runfirerock ${tradeId} ${seconds}`);
+            this.exec(`shell\\runfirerock ${tradeId} ${seconds} ${isMock}`);
             return new Promise((resolve, reject) => {
                 resolve({ 'success': msg });
             });

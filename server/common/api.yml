@@ -11,8 +11,12 @@ tags:
     description: The swagger API specification
   - name: Users
     description: system user information
+  - name: Config
+    description: trade configuration
   - name: ConfigMocks
     description: mock trade configuration
+  - name: Trades
+    description: trade records
   - name: MockTrades
     description: mock trade records
   - name: Strategy
@@ -48,7 +52,22 @@ definitions:
         example: aqua
       password:
         type: string
-        example: '123456'  
+        example: '123456' 
+  configBody:
+    type: object
+    title: Config
+    required:
+      - accesstoken
+      - update
+    properties:
+      accesstoken:
+        type: string
+        example: NWQ5MDVkYjlmYzg0ZDMyMjRiMGViNTljOjE2Nzg0M2Q5ZDQ3ZGJlMGE2OWE4MWEzYjBjNDgwNmY1NDM5NmM5ZmY5YjU4OWExNTdkMTE3Y2FjOWQzYmMzMGU=
+      update:
+        type: object
+        example: {
+          maxBuyNum : 4        
+        }  
   configMockBody:
     type: object
     title: ConfigMock
@@ -99,9 +118,60 @@ definitions:
             }
           }
         }
+  tradeBody:
+    type: object
+    title: Trade
+    required:
+      - accesstoken
+      - tradeid
+      - update
+    properties:
+      accesstoken:
+        type: string
+        example: NWQ5MDVkYjlmYzg0ZDMyMjRiMGViNTljOjE2Nzg0M2Q5ZDQ3ZGJlMGE2OWE4MWEzYjBjNDgwNmY1NDM5NmM5ZmY5YjU4OWExNTdkMTE3Y2FjOWQzYmMzMGU=
+      tradeid:
+        type: string
+        example: 5da1800e87b64fb6f4c32503
+      update:
+        type: object
+        example: {
+          deleted : true,
+          state: '启动',
+          result: '以19.24买入400股',
+          params: {
+            monitorTime : {
+              start : "09:30",
+              end : "15:00"
+            },
+            index_percent : {
+              low : -1.5,
+              high : 3.0
+            },
+            percent : {
+              low : -2.0,
+              high : 3.0
+            }
+          }
+        }
   historyMockTradeQueryBody:
     type: object
     title: HistoryMockTradeQuery
+    required:
+      - accesstoken
+      - createdDate
+    properties:
+      accesstoken:
+        type: string
+        example: NWQ5MDVkYjlmYzg0ZDMyMjRiMGViNTljOjE2Nzg0M2Q5ZDQ3ZGJlMGE2OWE4MWEzYjBjNDgwNmY1NDM5NmM5ZmY5YjU4OWExNTdkMTE3Y2FjOWQzYmMzMGU=
+      createdDate:
+        type: string
+        example: 2019-10-18
+      code:
+        type: string
+        example: ''
+  historyTradeQueryBody:
+    type: object
+    title: HistoryTradeQuery
     required:
       - accesstoken
       - createdDate
@@ -119,6 +189,38 @@ definitions:
   newMockTrade:
     type: object
     title: MockTrade
+    required:
+      - accesstoken
+      - strategyId
+      - params
+    properties:
+      accesstoken:
+        type: string
+        example: NWQ5MDVkYjlmYzg0ZDMyMjRiMGViNTljOjE2Nzg0M2Q5ZDQ3ZGJlMGE2OWE4MWEzYjBjNDgwNmY1NDM5NmM5ZmY5YjU4OWExNTdkMTE3Y2FjOWQzYmMzMGU=
+      strategyId:
+        type: string
+        example: 5da19b7d181fc3600c5544c2
+      params:
+        type: object
+        example: {
+          code : '002899',
+          monitorTime : {
+            start : "09:30",
+            end : "15:00"
+          },
+          index_percent : {
+            low : -1.5,
+            high : 3.0
+          },
+          percent : {
+            low : -2.0,
+            high : 3.0
+          }
+        }
+
+  newTrade:
+    type: object
+    title: Trade
     required:
       - accesstoken
       - strategyId
@@ -262,6 +364,22 @@ paths:
         200:
           description: Return the ConfigMock with the specified accesstoken
 
+  /config/{accesstoken}:
+    get:
+      tags:
+        - Config
+      description: get user trade config
+      parameters:
+        - name: accesstoken
+          in: path
+          required: true
+          x-example: NWQ5MDVkYjlmYzg0ZDMyMjRiMGViNTljOjE2Nzg0M2Q5ZDQ3ZGJlMGE2OWE4MWEzYjBjNDgwNmY1NDM5NmM5ZmY5YjU4OWExNTdkMTE3Y2FjOWQzYmMzMGU=
+          description: The accesstoken of the Config to retrieve
+          type: string
+      responses:
+        200:
+          description: Return the Config with the specified accesstoken
+
   /configmock:
     post:
       tags:
@@ -277,6 +395,22 @@ paths:
       responses:
         200:
           description: Return the updated new ConfigMock
+
+  /config:
+    post:
+      tags:
+        - Config
+      description: save user trade config
+      parameters:
+        - name: postData
+          in: body
+          required: true
+          description: The postData of the Config
+          schema: 
+            $ref: "#/definitions/configBody"
+      responses:
+        200:
+          description: Return the updated new Config
 
   /mocktrade/{accesstoken}:
     get:
@@ -294,6 +428,22 @@ paths:
         200:
           description: Return the user mock trade records
 
+  /trade/{accesstoken}:
+    get:
+      tags:
+        - Trades
+      description: get trade datas
+      parameters:
+        - name: accesstoken
+          in: path
+          required: true
+          description: the user accesstoken
+          x-example: NWQ5MDVkYjlmYzg0ZDMyMjRiMGViNTljOjE2Nzg0M2Q5ZDQ3ZGJlMGE2OWE4MWEzYjBjNDgwNmY1NDM5NmM5ZmY5YjU4OWExNTdkMTE3Y2FjOWQzYmMzMGU=
+          type: string
+      responses:
+        200:
+          description: Return the user trade records
+
   /mocktrade/history:
     post:
       tags:
@@ -308,7 +458,23 @@ paths:
             $ref: "#/definitions/historyMockTradeQueryBody"
       responses:
         200:
-          description: Return the history mock trade records         
+          description: Return the history mock trade records
+
+  /trade/history:
+    post:
+      tags:
+        - Trades
+      description: get history trade datas
+      parameters:
+        - name: postData
+          in: body
+          required: true
+          description: history trades query parameters
+          schema: 
+            $ref: "#/definitions/historyTradeQueryBody"
+      responses:
+        200:
+          description: Return the history trade records         
   
   /mocktrade:
     post:
@@ -324,7 +490,23 @@ paths:
             $ref: "#/definitions/mockTradeBody"
       responses:
         200:
-          description: Return the updated mock trade  
+          description: Return the updated mock trade
+
+  /trade:
+    post:
+      tags:
+        - Trades  
+      description: update trade 
+      parameters:
+        - name: postData 
+          in: body
+          required: true
+          description: the trade update data
+          schema: 
+            $ref: "#/definitions/tradeBody"
+      responses:
+        200:
+          description: Return the updated trade  
 
   /mocktrade/new:
     post:
@@ -340,7 +522,23 @@ paths:
             $ref: "#/definitions/newMockTrade"
       responses:
         200:
-          description: Return the created mock trade            
+          description: Return the created mock trade
+
+  /trade/new:
+    post:
+      tags:
+        - Trades  
+      description: create new trade 
+      parameters:
+        - name: newData 
+          in: body
+          required: true
+          description: the trade create data
+          schema: 
+            $ref: "#/definitions/newTrade"
+      responses:
+        200:
+          description: Return the created trade            
 
           
   /strategy:

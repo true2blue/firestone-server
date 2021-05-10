@@ -4,7 +4,7 @@ import configmockService from '../../services/configmock.service'
 export class FireStoneRockController {
 
     create(req, res) {
-        firestonerockService.createNewFirerock(req.body.codes, req.body.tradeId).then(r => {
+        firestonerockService.createNewFirerock(req.body.codes, req.body.tradeId, req.body.isMock).then(r => {
             r ? res.json(r) : res.json({});
         }, err => {
             res.json({ "error": err ? err.toString() : 'failed to create new firerock' });

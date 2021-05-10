@@ -14,6 +14,7 @@ import swaggerify from './swagger';
 import l from './logger';
 import { connectDB } from '../api/models';
 import configMockService from '../api/services/configmock.service'
+import configService from '../api/services/config.service'
 
 const app = new Express();
 
@@ -40,6 +41,11 @@ export default class ExpressServer {
       l.info('reset all mock config curBuyNum = 0, monitor_concept = [] done');
     }, (err) => {
       l.error(`reset all mock config curBuyNum = 0, monitor_concept = [] failed = ${err}`);
+    });
+    configService.clear().then(r => {
+      l.info('reset all config curBuyNum = 0, monitor_concept = [] done');
+    }, (err) => {
+      l.error(`reset all config curBuyNum = 0, monitor_concept = [] failed = ${err}`);
     });
     if (process.env.ENABLE_FIRESTONE === 'true') {
       let exec = util.promisify(child_process.exec)

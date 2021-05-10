@@ -4,6 +4,12 @@ db.users.insert({
    password: "e10adc3949ba59abbe56e057f20f883e",
    _id: ObjectId("5d905db9fc84d3224b0eb59c")
 });
+db.configs.insert({
+    "maxBuyNum" : 3,
+    "curBuyNum" : 0,
+    "monitor_concept" : [],
+    "userId" : ObjectId("5d905db9fc84d3224b0eb59c")
+});
 db.configmocks.insert({
     "maxBuyNum" : 3,
     "curBuyNum" : 0,
