@@ -29,6 +29,9 @@ const tradeSchema = new mongoose.Schema({
     },
     params : {
         type: Object
+    },
+    order : {
+        type: Object
     }
 });
 
