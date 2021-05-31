@@ -175,17 +175,18 @@ db.strategies.insertMany([{
             "low" : "0",
             "close" : "0" 
         },
-        "points" : "7",
+        "points" : "13",
         "approach" : "0.5",
         "stop_win" : "3.0",
         "drop_from_high" : "0.5",
         "body_length" : "3.0",
-        "down_shadow_body_ratio" : "0.2",
-        "close_low_interval_time" : "60",
-        "close_low_interval_time_max" : "600",
+        "down_shadow_body_ratio" : "0.5",
+        "down_shadow_body_ratio_min" : "0.15",
+        "close_low_interval_time" : "20",
+        "close_low_interval_time_max" : "180",
         "money" : {
             "time" : "1",
-            "amount" : "200"
+            "amount" : "60"
         },
         "volume" : "1000"
     }
