@@ -176,6 +176,7 @@ db.strategies.insertMany([{
             "close" : "0" 
         },
         "points" : "7",
+        "approach" : "0.5",
         "stop_win" : "3.0",
         "drop_from_high" : "0.5",
         "body_length" : "3.0",
