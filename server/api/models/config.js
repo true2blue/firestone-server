@@ -9,6 +9,12 @@ const configSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    cookie: {
+        type: String
+    },
+    validatekey: {
+        type: String
+    },
     monitor_concept: {
         type: Array
     },
