@@ -15,6 +15,9 @@ const configSchema = new mongoose.Schema({
     validatekey: {
         type: String
     },
+    gddm:{
+        type: String
+    },
     monitor_concept: {
         type: Array
     },

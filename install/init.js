@@ -10,6 +10,7 @@ db.configs.insert({
     "monitor_concept" : [],
     "cookie" : "",
     "validatekey" : "",
+    "gddm" : "0122885212",
     "userId" : ObjectId("5d905db9fc84d3224b0eb59c")
 });
 db.configmocks.insert({
