@@ -19,6 +19,14 @@ export class FireStoneRockController {
         });
     }
 
+    ping_dfcf_heart_beat(req, res){
+        firestonerockService.start_heart_beat_dfcf({'Cookie' : req.body.cookie}, req.body.validatekey).then(data => {
+            data ? res.json(data) : res.json({});
+        }, err => {
+            res.json({ "error": err ? err.toString() : 'failed to send test heart beat' });
+        });
+    }
+
     //only use for test
     heart_beat(req, res) {
         configmockService.getConfig(req.params.accesstoken).then(r => {

@@ -6,3 +6,4 @@ export default express
   .post('/', controller.create)
   .get('/heartbeat/:accesstoken', controller.heart_beat)
   .post('/pingheartbeat', controller.ping_heart_beat)
+  .post('/pingdfcfheartbeat', controller.ping_dfcf_heart_beat)
