@@ -275,7 +275,20 @@ definitions:
       cookie:
         type: string
         example: __utma=156575163.1101180334.1557107567.1557375466.1557738304.3; isSaveAccount=0; Hm_lvt_416c770ac83a9d996d7b3793f8c4994d=1572344617; user=MDphcXVhSVFjOjpOb25lOjUwMDo0MjUzOTk0Njc6NywxMTExMTExMTExMSw0MDs0NCwxMSw0MDs2LDEsNDA7NSwxLDQwOzEsMSw0MDsyLDEsNDA7MywxLDQwOzUsMSw0MDs4LDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxLDQwOjI0Ojo6NDE1Mzk5NDY3OjE1NzQyNTY3NTA6OjoxNTA2MDQ4OTYwOjYwNDgwMDowOjFjOGFlMGY3YjUxYmNkZjQ5MjI3OTBmNjg3ZjMzYzNlMTpkZWZhdWx0XzM6MQ%3D%3D; userid=415399467; u_name=aquaIQc; escapename=aquaIQc; ticket=11fe4b0cedab783ea1fc2d592d537d46; historystock=002436; spversion=20130314; v=Ag0b1XVgbDoSGcgWkFKH0MLBHCKE6kG9yx6lkE-SSaQTRiPUFzpRjFtutWXc; Hm_lvt_78c58f01938e4d85eaf619eae71b4ed1=1574256074,1574256089,1574317827,1574343159; Hm_lpvt_78c58f01938e4d85eaf619eae71b4ed1=1574343159; PHPSESSID=7824b8ed7e3cd04bbd6edd564e61c7fc  
-              
+
+  fireStoneDfcfHeartBeat:
+    type: object
+    title: fireStoneDfcfHeartBeat
+    required:
+      - cookie   
+      - validatekey
+    properties:
+      cookie:
+        type: string
+        example: __utma=156575163.1101180334.1557107567.1557375466.1557738304.3; isSaveAccount=0; Hm_lvt_416c770ac83a9d996d7b3793f8c4994d=1572344617; user=MDphcXVhSVFjOjpOb25lOjUwMDo0MjUzOTk0Njc6NywxMTExMTExMTExMSw0MDs0NCwxMSw0MDs2LDEsNDA7NSwxLDQwOzEsMSw0MDsyLDEsNDA7MywxLDQwOzUsMSw0MDs4LDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAxLDQwOjI0Ojo6NDE1Mzk5NDY3OjE1NzQyNTY3NTA6OjoxNTA2MDQ4OTYwOjYwNDgwMDowOjFjOGFlMGY3YjUxYmNkZjQ5MjI3OTBmNjg3ZjMzYzNlMTpkZWZhdWx0XzM6MQ%3D%3D; userid=415399467; u_name=aquaIQc; escapename=aquaIQc; ticket=11fe4b0cedab783ea1fc2d592d537d46; historystock=002436; spversion=20130314; v=Ag0b1XVgbDoSGcgWkFKH0MLBHCKE6kG9yx6lkE-SSaQTRiPUFzpRjFtutWXc; Hm_lvt_78c58f01938e4d85eaf619eae71b4ed1=1574256074,1574256089,1574317827,1574343159; Hm_lpvt_78c58f01938e4d85eaf619eae71b4ed1=1574343159; PHPSESSID=7824b8ed7e3cd04bbd6edd564e61c7fc  
+      validatekey:
+        type: string
+        example: 123
 
 paths:
   /examples:
@@ -611,6 +624,23 @@ paths:
           description: the ths cookie
           schema: 
             $ref: "#/definitions/fireStoneHeartBeat"
+      responses:
+        200:
+          description: Return the heart beat result
+
+
+  /firestonerock/pingdfcfheartbeat:
+    post:
+      tags:
+        - Firestonerock  
+      description: ping heart beat to dfcf to do the test
+      parameters:
+        - name: dfcf_param 
+          in: body
+          required: true
+          description: cookie and validate key
+          schema: 
+            $ref: "#/definitions/fireStoneDfcfHeartBeat"
       responses:
         200:
           description: Return the heart beat result
