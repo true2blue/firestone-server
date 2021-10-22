@@ -82,6 +82,7 @@ db.strategies.insertMany([{
             "percent" : "2",
             "amount" : "800"
         },
+        "auto_cancel" : '1',
         "volume" : 30000
     }
 },{
