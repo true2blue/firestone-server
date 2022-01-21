@@ -175,20 +175,15 @@ db.strategies.insertMany([{
             "end" : "15:00"
         },
         "force_sell_time" : "14:50:00",
-        "pre" : {
-            "high" : "0",
-            "low" : "0",
-            "close" : "0" 
-        },
-        "points" : "13",
-        "approach" : "0.5",
+        "start_buy_line" : "3",
+        "min_rebound" : "0.5",
+        "max_rebound" : "3.0",
         "stop_win" : "3.0",
         "drop_from_high" : "0.5",
-        "body_length" : "3.0",
-        "down_shadow_body_ratio" : "0.5",
-        "down_shadow_body_ratio_min" : "0.15",
-        "close_low_interval_time" : "20",
-        "close_low_interval_time_max" : "180",
+        "speed" : {
+            "time_2" : "1",
+            "percent" : "1"
+        },
         "money" : {
             "time" : "1",
             "amount" : "60"
