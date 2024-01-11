@@ -1,5 +1,7 @@
 # firestone-server
 
+node version v.12.10
+
 firestone-server
 
 ## Get Started
