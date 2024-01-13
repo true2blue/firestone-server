@@ -4,34 +4,32 @@ import util from 'util'
 import http from 'http'
 import https from 'https'
 import querystring from 'querystring'
-import zlib from 'zlib'
 
 class FireStoneRockService {
 
     constructor() {
         this.exec = util.promisify(child_process.exec)
         this.options = {
-            'hostname': 'mncg.10jqka.com.cn',
-            'port': 80,
-            'path': '/cgiwt/delegate/qryChengjiao',
             'method': 'POST',
+            'hostname': 'mncg.10jqka.com.cn',
+            'path': '/cgiwt/delegate/qryChengjiao',
             'headers': {
-                'Accept': 'application/json, text/javascript, */*; q=0.01',
-                'Accept-Encoding': 'gzip, deflate, br',
-                'Accept-Language': 'en,zh-CN;q=0.9,zh;q=0.8',
-                'Connection': 'keep-alive',
-                'Content-Length': 0,
-                'Host': 'mncg.10jqka.com.cn',
-                'Origin': 'https://mncg.10jqka.com.cn',
-                'Referer': 'https://mncg.10jqka.com.cn/cgiwt/index/index',
-                'Sec-Fetch-Dest': 'empty',
-                'Sec-Fetch-Mode': 'cors',
-                'Sec-Fetch-Site': 'same-origin',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'X-Requested-With': 'XMLHttpRequest',
-                'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-                'sec-ch-ua-mobile': '?0',
-                'sec-ch-ua-platform': '"Windows"'
+                'Accept': ' application/json, text/javascript, */*; q=0.01',
+                'Accept-Encoding': ' gzip, deflate, br',
+                'Accept-Language': ' en,zh-CN;q=0.9,zh;q=0.8',
+                'Connection': ' keep-alive',
+                'Content-Length': ' 0',
+                'Host': ' mncg.10jqka.com.cn',
+                'Origin': ' https://mncg.10jqka.com.cn',
+                'Referer': ' https://mncg.10jqka.com.cn/cgiwt/index/index',
+                'Sec-Fetch-Dest': ' empty',
+                'Sec-Fetch-Mode': ' cors',
+                'Sec-Fetch-Site': ' same-origin',
+                'User-Agent': ' Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'X-Requested-With': ' XMLHttpRequest',
+                'sec-ch-ua': ' "Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+                'sec-ch-ua-mobile': ' ?0',
+                'sec-ch-ua-platform': ' "Windows"'
             }
         };
         this.dfcf_options = {
@@ -81,18 +79,24 @@ class FireStoneRockService {
         if (process.env.ENABLE_THS_HEART_BEAT === 'true') {
             Object.assign(this.options.headers, headers)
             return new Promise((resolve, reject) => {
+                console.log(this.options)
                 let req = http.request(this.options, (res) => {
-                    res.on('data', (d) => {
-                        zlib.gunzip(d, function (err, dezipped) {
-                            if (err) {
-                                l.error(`failed to parse the heart beat result = ${err}`);
-                            }
-                            else {
-                                let result = dezipped.toString();
-                                l.info(`send heart beat to ths get response = ${result}`);
-                                resolve(JSON.parse(result));
-                            }
-                        });
+                    var chunks = [];
+
+                    res.on('data', (chunk) => {
+                        chunks.push(chunk);
+                    });
+
+                    res.on("end", function (chunk) {
+                        let body = Buffer.concat(chunks);
+                        let result = body.toString();
+                        l.info(`send heart beat to ths get response = ${result}`);
+                        resolve(JSON.parse(result));
+                    });
+
+                    res.on("error", function (error) {
+                        l.error(`failed to parse the heart beat result = ${error}`);
+                        reject(error);
                     });
                 })
 
