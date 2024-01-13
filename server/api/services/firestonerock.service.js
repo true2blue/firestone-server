@@ -85,7 +85,7 @@ class FireStoneRockService {
                     res.on('data', (d) => {
                         zlib.gunzip(d, function (err, dezipped) {
                             if (err) {
-                                l.error('failed to parse the heart beat result');
+                                l.error(`failed to parse the heart beat result = ${err}`);
                             }
                             else {
                                 let result = dezipped.toString();
