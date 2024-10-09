@@ -110,7 +110,7 @@ npm run lint
 Deploy to CloudFoundry
 
 ```
-npm install -g serve
+npm install -g serve@13.0.4
 ```
 
 ```shell
