@@ -1,3 +1,4 @@
+setx FR_DB firestone
 mongo 127.0.0.1/firestone --eval "db.dropDatabase(); db.getCollection('hot_concept').drop(); db.getSiblingDB('firestone');" "init.js" 
 mongoimport -d firestone -c codes "codes.json"
 mongoimport -d firestone -c concepts "concepts.json" 

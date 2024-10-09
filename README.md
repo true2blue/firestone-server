@@ -2,6 +2,8 @@
 
 firestone-server
 
+NodeJS v12.22.12
+
 ## Get Started
 
 Get started developing...
