@@ -109,6 +109,10 @@ npm run lint
 
 Deploy to CloudFoundry
 
+```
+npm install -g serve
+```
+
 ```shell
 cf push firestone-server
 ```
