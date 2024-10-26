@@ -4,6 +4,7 @@ import util from 'util'
 import http from 'http'
 import https from 'https'
 import querystring from 'querystring'
+import { createGunzip } from 'zlib';
 
 class FireStoneRockService {
 
@@ -120,17 +121,30 @@ class FireStoneRockService {
         Object.assign(this.dfcf_options.headers, headers);
         return new Promise((resolve, reject) => {
             let req = https.request(this.dfcf_options, (res) => {
-                res.on('data', (d) => {
-                    let result = JSON.parse(d)
-                    if(result['Status'] == 0){
-                        l.info(`send heart beat to dfcf get response = ${d}`);
-                        resolve(result);
-                    }
-                    else{
-                        l.error(`failed to parse the heart beat dfcf result = ${d}`);
-                        reject(result);
-                    }
-                });
+                const encoding = res.headers['content-encoding'];
+                let stream = res;
+                // If the response is gzipped, create a gunzip stream
+                if (encoding && encoding.includes('gzip')) {
+                    stream = res.pipe(createGunzip());
+                }
+
+                var chunks = [];
+
+                    stream.on('data', (chunk) => {
+                        chunks.push(chunk);
+                    });
+
+                    stream.on("end", function (chunk) {
+                        let body = Buffer.concat(chunks);
+                        let result = body.toString('utf-8');
+                        l.info(`send heart beat to dfcf get response = ${result}`);
+                        resolve(JSON.parse(result));
+                    });
+
+                    stream.on("error", function (error) {
+                        l.error(`failed to parse the heart beat result = ${error}`);
+                        reject(error);
+                    });
             })
 
             req.on('error', (e) => {
