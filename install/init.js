@@ -177,6 +177,8 @@ db.strategies.insertMany([{
         "force_sell_time" : "14:50:00",
         "start_buy_line" : "3",
         "buy_on_low_limit" : "1",
+        "cb" : "0",
+        "buy_below_cb_percent" : "-999",
         "min_rebound" : "0.5",
         "max_rebound" : "3.0",
         "stop_win" : "3.0",
