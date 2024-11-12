@@ -193,4 +193,22 @@ db.strategies.insertMany([{
         },
         "volume" : "1000"
     }
+},{
+    "_id" : ObjectId("5da19b7d181fc3600c5544c8"),
+    "name" : "MultiBuy",
+    "description" : "在<i>监控时间</i>范围内,分多次买入股票",
+    "op" : "buy",
+    "url" : "MultiBuy",
+    "parameters" : {
+        "code" : "",
+        "executeDate" : "",
+        "monitorTime" : {
+            "start" : "09:30",
+            "end" : "15:00"
+        },
+        "max_buy_count" : "2",
+        "limit_open_percent" : "1.5",
+        "drop_open_percent" : "1",
+        "volume" : "500"
+    }
 }]);

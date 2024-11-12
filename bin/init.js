@@ -156,4 +156,54 @@ db.strategies.insertMany([{
         "max_stock_percent" : "7.0",
         "volume" : "10000"
     }
+},{
+    "_id" : ObjectId("5da19b7d181fc3600c5544c7"),
+    "name" : "T0",
+    "description" : "在<i>监控时间</i>范围内,买入并卖出股票",
+    "op" : "buy",
+    "url" : "PPT0",
+    "parameters" : {
+        "code" : "",
+        "executeDate" : "",
+        "monitorTime" : {
+            "start" : "09:30",
+            "end" : "15:00"
+        },
+        "force_sell_time" : "14:50:00",
+        "start_buy_line" : "3",
+        "buy_on_low_limit" : "1",
+        "cb" : "0",
+        "buy_below_cb_percent" : "-999",
+        "min_rebound" : "0.5",
+        "max_rebound" : "3.0",
+        "stop_win" : "3.0",
+        "drop_from_high" : "0.5",
+        "speed" : {
+            "time_2" : "1",
+            "percent" : "1"
+        },
+        "money" : {
+            "time" : "1",
+            "amount" : "60"
+        },
+        "volume" : "1000"
+    }
+},{
+    "_id" : ObjectId("5da19b7d181fc3600c5544c8"),
+    "name" : "MultiBuy",
+    "description" : "在<i>监控时间</i>范围内,分多次买入股票",
+    "op" : "buy",
+    "url" : "MultiBuy",
+    "parameters" : {
+        "code" : "",
+        "executeDate" : "",
+        "monitorTime" : {
+            "start" : "09:30",
+            "end" : "15:00"
+        },
+        "max_buy_count" : "2",
+        "limit_open_percent" : "1.5",
+        "drop_open_percent" : "1",
+        "volume" : "500"
+    }
 }]);
