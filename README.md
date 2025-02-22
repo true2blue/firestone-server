@@ -1,6 +1,7 @@
 # firestone-server
 
 node version v.12.10
+npm install -g serve v12.0.0
 
 firestone-server
 
