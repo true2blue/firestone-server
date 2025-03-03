@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import l from '../../common/logger';
+import { type } from 'os';
 
 const configSchema = new mongoose.Schema({
   maxBuyNum: {
@@ -20,6 +21,10 @@ const configSchema = new mongoose.Schema({
   },
   hgddm: {
     type: String,
+  },
+  delta: {
+    type: Number,
+    default: 0
   },
   monitor_concept: {
     type: Array,

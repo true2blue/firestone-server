@@ -21,7 +21,8 @@ db.mocktrades.insertMany([{
             "low" : "-0.5",
             "high" : "2.5"
         },
-        "volume" : 1000
+        "volume" : 1000,
+        "delta" : 0
     }
 },{
     _id: ObjectId("5da1800e87b64fb6f4c32503"),
@@ -47,7 +48,8 @@ db.mocktrades.insertMany([{
             "low" : "-0.5",
             "high" : "2.5"
         },
-        "volume" : 1000
+        "volume" : 1000,
+        "delta" : 0
     }
 },{
     "code" : "300693",
@@ -72,7 +74,8 @@ db.mocktrades.insertMany([{
             "low" : "-0.5",
             "high" : "2.5"
         },
-        "volume" : 1000
+        "volume" : 1000,
+        "delta" : 0
     }
 },{
     "code" : "300694",
@@ -97,6 +100,7 @@ db.mocktrades.insertMany([{
             "low" : "-0.5",
             "high" : "2.5"
         },
-        "volume" : 1000
+        "volume" : 1000,
+        "delta" : 0
     }
 }]);

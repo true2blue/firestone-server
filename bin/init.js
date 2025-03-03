@@ -42,7 +42,8 @@ db.strategies.insertMany([{
             "low" : "-4",
             "high" : "-1"
         },
-        "volume" : 1000
+        "volume" : 1000,
+        "delta" : 0
     }
 },{
     "_id" : ObjectId("5da19b7d181fc3600c5544c3"),
@@ -79,7 +80,8 @@ db.strategies.insertMany([{
             "percent" : "2",
             "amount" : "800"
         },
-        "volume" : 20000
+        "volume" : 20000,
+        "delta" : 0
     }
 },{
     "_id" : ObjectId("5da19b7d181fc3600c5544c4"),
@@ -105,7 +107,8 @@ db.strategies.insertMany([{
             "ratio_stock" : 7,
             "ratio_index" : 3
         },
-        "volume" : 1000
+        "volume" : 1000,
+        "delta" : 0
     }
 },{
     "_id" : ObjectId("5da19b7d181fc3600c5544c5"),
@@ -134,6 +137,7 @@ db.strategies.insertMany([{
         "min_percent" : "2.5",
         "max_percent" : "5.0",
         "volume" : "20000",
+        "delta" : 0,
         "strategyId" : "5da19b7d181fc3600c5544c3"
     }
 },{
@@ -154,7 +158,8 @@ db.strategies.insertMany([{
         "open_percent_low" : "-2.0",
         "open_percent_high" : "3.5",
         "max_stock_percent" : "7.0",
-        "volume" : "10000"
+        "volume" : "10000",
+        "delta" : 0
     }
 },{
     "_id" : ObjectId("5da19b7d181fc3600c5544c7"),
@@ -186,7 +191,8 @@ db.strategies.insertMany([{
             "time" : "1",
             "amount" : "60"
         },
-        "volume" : "1000"
+        "volume" : "1000",
+        "delta" : 0
     }
 },{
     "_id" : ObjectId("5da19b7d181fc3600c5544c8"),
@@ -204,6 +210,7 @@ db.strategies.insertMany([{
         "max_buy_count" : "2",
         "limit_open_percent" : "1.5",
         "drop_open_percent" : "1",
-        "volume" : "500"
+        "volume" : "500",
+        "delta" : 0
     }
 }]);
