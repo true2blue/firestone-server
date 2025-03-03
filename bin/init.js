@@ -8,6 +8,10 @@ db.configs.insert({
     "maxBuyNum" : 3,
     "curBuyNum" : 0,
     "monitor_concept" : [],
+    "cookie": "",
+    "validatekey": "",
+    "gddm": "0122885212",
+    "hgddm": "A420276725",
     "userId" : ObjectId("5d905db9fc84d3224b0eb59c")
 });
 db.configmocks.insert({
