@@ -190,6 +190,7 @@ db.strategies.insertMany([{
     max_rebound: '3.0',
     stop_win: '3.0',
     drop_from_high: '0.5',
+    drop_percent : '1.0',
     speed: {
       time_2: '1',
       percent: '1',
