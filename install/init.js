@@ -181,6 +181,7 @@ db.strategies.insertMany([{
       start: '09:30',
       end: '15:00',
     },
+    auto : '1',
     force_sell_time: '15:50:00',
     start_buy_line: '1',
     buy_on_low_limit: '1',
