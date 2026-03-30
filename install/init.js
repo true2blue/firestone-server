@@ -223,4 +223,45 @@ db.strategies.insertMany([{
     volume: '500',
     delta : 0
   },
+},{
+    "_id" : ObjectId("5da19b7d181fc3600c5544c9"),
+    "name" : "FreeK",
+    "description" : "在<i>监控时间</i>范围内,根据指定K线形态,涨速,成交量进行匹配",
+    "op" : "buy",
+    "url" : "FreeK",
+    "parameters" : {
+        "code" : "",
+        "executeDate" : "",
+        "monitorTime" : {
+            "start" : "09:30",
+            "end" : "15:00"
+        },
+        "k_shape" : {
+            "open" : {
+                "min" : "0.0",
+                "max" : "0.0"
+            },
+            "low" : {
+                "min" : "0.0",
+                "max" : "0.0"
+            },
+            "high" : {
+                "min" : "0.0",
+                "max" : "0.0"
+            },
+            "close" : {
+                "min" : "0.0",
+                "max" : "0.0"
+            }
+        },
+        "speed" : {
+            "time_price" : "30",
+            "percent" : "0.0",
+            "time_volume" : "30",
+            "volume" : "0"
+        },
+        "voulme_now" : "0",
+        "volume" : "500",
+        "delta" : 0
+    }
 }]);
