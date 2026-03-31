@@ -163,7 +163,6 @@ db.strategies.insertMany([{
     strategyId: '5da19b7d181fc3600c5544c3',
     open_percent_low: '-2.0',
     open_percent_high: '3.5',
-    max_stock_percent: '3.0',
     min_avg_stock_percent : "1.0",
     auto_cancel: '1',
     volume: '30000',
