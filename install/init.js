@@ -260,10 +260,10 @@ db.strategies.insertMany([{
         "speed" : {
             "time_price" : "30",
             "percent" : "0.0",
-            "time_volume" : "30",
-            "volume" : "0"
+            "time_amount" : "30",
+            "amount" : "0"
         },
-        "voulme_now" : "0",
+        "amount_now" : "0",
         "volume" : "500",
         "delta" : 0
     }
